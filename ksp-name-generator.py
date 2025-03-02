@@ -116,53 +116,44 @@ names = [
 print("Select a vessel type: ")
 selectionlist = sorted(vehicleprefix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
-    print(f"{i+1}. {item[1]}")
+    print(f"{i}. {item[1]}")
 while True:
     selection = input("Enter value: ")
     try:
-        selection = int(selection)
+        vessel = selectionlist[int(selection)][0]
         break
     except:
         continue
-vessel = selectionlist[selection - 1][0]
 
-print("Select a mission suffix, or 0 for none: ")
+print("Select a mission suffix, or blank for none: ")
 selectionlist = sorted(missionsuffix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
-    print(f"{i+1}. {item[1]}")
+    print(f"{i}. {item[1]}")
 while True:
     selection = input("Enter value: ")
     try:
-        selection = int(selection)
+        mission = selectionlist[int(selection)][0]
         break
     except:
         if selection == '':
-            selection = 0
+            mission = ''
             break
         continue
-if selection == 0:
-    mission = ''
-else:
-    mission = selectionlist[selection - 1][0]
 
-print("Select a lifter suffix, or 0 for none: ")
+print("Select a lifter suffix, or blank for none: ")
 selectionlist = sorted(liftersuffix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
-    print(f"{i+1}. {item[1]}")
+    print(f"{i}. {item[1]}")
 while True:
     selection = input("Enter value: ")
     try:
-        selection = int(selection)
+        lifter = f"/{selectionlist[int(selection)][0]}"
         break
     except:
         if selection == '':
-            selection = 0
+            lifter = ''
             break
         continue
-if selection == 0:
-    lifter = ''
-else:
-    lifter = f"/{selectionlist[selection - 1][0]}"
 
 number = input("Enter iteration number: ")
 
