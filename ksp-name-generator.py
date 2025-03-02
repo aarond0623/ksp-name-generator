@@ -117,14 +117,29 @@ print("Select a vessel type: ")
 selectionlist = sorted(vehicleprefix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
     print(f"{i+1}. {item[1]}")
-selection = int(input("Enter value: "))
+while True:
+    selection = input("Enter value: ")
+    try:
+        selection = int(selection)
+        break
+    except:
+        continue
 vessel = selectionlist[selection - 1][0]
 
 print("Select a purpose prefix, or 0 for none: ")
 selectionlist = sorted(purposeprefix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
     print(f"{i+1}. {item[1]}")
-selection = int(input("Enter value: "))
+while True:
+    selection = input("Enter value: ")
+    try:
+        selection = int(selection)
+        break
+    except:
+        if selection == '':
+            selection = 0
+            break
+        continue
 if selection == 0:
     purpose = ''
 else:
@@ -134,7 +149,16 @@ print("Select a lifter suffix, or 0 for none: ")
 selectionlist = sorted(liftersuffix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
     print(f"{i+1}. {item[1]}")
-selection = int(input("Enter value: "))
+while True:
+    selection = input("Enter value: ")
+    try:
+        selection = int(selection)
+        break
+    except:
+        if selection == '':
+            selection = 0
+            break
+        continue
 if selection == 0:
     lifter = ''
 else:
