@@ -9,29 +9,27 @@ vehicleprefix = {
         'P': 'spaceplane',
         'R': 'rover',
         'S': 'space station',
-        'T': 'satellite',
-        'V': 'spaceship',
-        'Z': 'no vessel'
+        'V': 'ship',
+        'W': 'launcher'
 }
 
-purposeprefix = {
+missionsuffix = {
         'C': 'crew transport',
-        'D': 'unmanned',
+        'E': 'experiment/science',
         'F': 'fuel',
-        'H': 'heavy cargo',
-        'K': 'communication',
+        'G': 'cargo',
         'N': 'scanner',
         'R': 'rescue',
-        'X': 'experimental',
+        'T': 'communication',
         'Y': 'science'
 }
 
 liftersuffix = {
-        'A': 'suborbital',
-        'B': 'low orbital',
-        'C': 'high orbital',
-        'D': 'lunar',
-        'E': 'interplanetary'
+        'a': 'suborbital',
+        'b': 'low orbital',
+        'c': 'high orbital',
+        'd': 'lunar',
+        'e': 'interplanetary'
 }
 
 names_a = [
@@ -128,8 +126,8 @@ while True:
         continue
 vessel = selectionlist[selection - 1][0]
 
-print("Select a purpose prefix, or 0 for none: ")
-selectionlist = sorted(purposeprefix.items(), key=lambda x: x[1])
+print("Select a mission suffix, or 0 for none: ")
+selectionlist = sorted(missionsuffix.items(), key=lambda x: x[1])
 for i, item in enumerate(selectionlist):
     print(f"{i+1}. {item[1]}")
 while True:
@@ -143,9 +141,9 @@ while True:
             break
         continue
 if selection == 0:
-    purpose = ''
+    mission = ''
 else:
-    purpose = selectionlist[selection - 1][0]
+    mission = selectionlist[selection - 1][0]
 
 print("Select a lifter suffix, or 0 for none: ")
 selectionlist = sorted(liftersuffix.items(), key=lambda x: x[1])
@@ -168,7 +166,7 @@ else:
 
 number = input("Enter iteration number: ")
 
-name = f"{vessel}{purpose}-{number}{lifter}"
+name = f"{vessel}-{number}{mission}{lifter}"
 
 print(name)
 
