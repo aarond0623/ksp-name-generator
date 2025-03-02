@@ -10,7 +10,8 @@ vehicleprefix = {
         'R': 'rover',
         'S': 'space station',
         'T': 'satellite',
-        'V': 'spaceship'
+        'V': 'spaceship',
+        'Z': 'no vessel'
 }
 
 purposeprefix = {
