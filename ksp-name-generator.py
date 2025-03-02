@@ -3,21 +3,22 @@ from random import choice
 vehicleprefix = {
         'A': 'aircraft',
         'B': 'base',
-        'C': 'capsule',
         'D': 'probe',
-        'H': 'shuttle',
         'L': 'lander',
+        'O': 'space shuttle',
         'P': 'spaceplane',
         'R': 'rover',
         'S': 'space station',
-        'T': 'satellite'
+        'T': 'satellite',
+        'V': 'spaceship'
 }
 
 purposeprefix = {
-        'C': 'communication',
+        'C': 'crew transport',
         'D': 'unmanned',
         'F': 'fuel',
-        'K': 'cargo',
+        'H': 'heavy cargo',
+        'K': 'communication',
         'N': 'scanner',
         'R': 'rescue',
         'X': 'experimental',
