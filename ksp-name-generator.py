@@ -3,6 +3,7 @@ from random import choice
 vessels = {
         'aircraft': 'A',
         'base': 'BS',
+        'capsule': 'C',
         'experimental': 'X',
         'lander': 'L',
         'launcher': 'W',
@@ -136,7 +137,7 @@ while True:
 
 name += vessels.get(vessel, '')
 
-if vessel in ['aircraft', 'experimental', 'lander', 'rover', 'space plane', 'space shuttle', '']:
+if vessel in ['aircraft', 'capsule', 'experimental', 'lander', 'rover', 'space plane', 'space shuttle', '']:
     print("Select manned/unmanned: ")
     selectionlist = sorted(manned_state.keys())
     for i, item in enumerate(selectionlist):
