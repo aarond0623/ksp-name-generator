@@ -4,7 +4,6 @@ vessels = {
         'aircraft': 'A',
         'base': 'BS',
         'capsule': 'C',
-        'experimental': 'X',
         'lander': 'L',
         'launcher': 'W',
         'rover': 'R',
@@ -123,11 +122,13 @@ name = ""
 print("Select a vessel type, or blank for none: ")
 selectionlist = sorted(vessels.keys())
 for i, item in enumerate(selectionlist):
-    print(f"{i}. {item}")
+    print(f"{i + 1}. {item}")
 while True:
     selection = input("Enter value: ")
     try:
-        vessel = selectionlist[int(selection)]
+        selection = int(selection)
+        assert 0 < selection <= len(selectionlist)
+        vessel = selectionlist[selection - 1]
         break
     except:
         if selection == '':
@@ -137,15 +138,17 @@ while True:
 
 name += vessels.get(vessel, '')
 
-if vessel in ['aircraft', 'capsule', 'experimental', 'lander', 'rover', 'space plane', 'space shuttle', '']:
+if vessel in ['aircraft', 'capsule', 'lander', 'rover', 'space plane', 'space shuttle', '']:
     print("Select manned/unmanned: ")
     selectionlist = sorted(manned_state.keys())
     for i, item in enumerate(selectionlist):
-        print(f"{i}. {item}")
+        print(f"{i + 1}. {item}")
     while True:
         selection = input("Enter value: ")
         try:
-            manned = selectionlist[int(selection)]
+            selection = int(selection)
+            assert 0 < selection <= len(selectionlist)
+            manned = selectionlist[selection - 1]
             break
         except:
             continue
@@ -157,11 +160,13 @@ name += f"-{number}"
 print("Select a mission suffix, or blank for none: ")
 selectionlist = sorted(missions.keys())
 for i, item in enumerate(selectionlist):
-    print(f"{i}. {item}")
+    print(f"{i + 1}. {item}")
 while True:
     selection = input("Enter value: ")
     try:
-        mission = selectionlist[int(selection)]
+        selection = int(selection)
+        assert 0 < selection <= len(selectionlist)
+        mission = selectionlist[selection - 1]
         break
     except:
         if selection == '':
@@ -174,11 +179,13 @@ name += missions.get(mission, '')
 print("Select a lifter suffix, or blank for none: ")
 selectionlist = sorted(lifters.keys())
 for i, item in enumerate(selectionlist):
-    print(f"{i}. {item}")
+    print(f"{i + 1}. {item}")
 while True:
     selection = input("Enter value: ")
     try:
-        lifter = selectionlist[int(selection)]
+        selection = int(selection)
+        assert 0 < selection <= len(selectionlist)
+        lifter = selectionlist[selection - 1]
         break
     except:
         if selection == '':
@@ -193,9 +200,9 @@ print(name)
 selection = input("Would you like a mission name? y/N: ")
 
 while selection.lower() == 'y':
-    if vessel in 'AHP' or lifter == 'A':
+    if vessel in ['aircraft', 'space plane', 'space shuttle'] or lifter == 'suborbital':
         names += names_a
-    if lifter == 'E':
+    if lifter == 'interplanetary':
         names += names_e
     mission = choice(names)
     print(f"{name} {mission}")
