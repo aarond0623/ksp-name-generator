@@ -177,7 +177,7 @@ while True:
 name += missions.get(mission, '')
 
 print("Select a lifter suffix, or blank for none: ")
-selectionlist = sorted(lifters.keys())
+selectionlist = [x[0] for x in sorted(lifters.items(), key=lambda x: x[1])]
 for i, item in enumerate(selectionlist):
     print(f"{i + 1}. {item}")
 while True:
