@@ -15,7 +15,8 @@ vessels = {
 
 manned_state = {
     'manned': 'V',
-    'unmanned': 'P'
+    'unmanned': 'P',
+    'experimental': 'X'
 }
 
 missions = {
@@ -152,7 +153,10 @@ if vessel in ['aircraft', 'capsule', 'lander', 'rover', 'space plane', 'space sh
             break
         except:
             continue
-    name += manned_state[manned]
+    if manned == 'experimental':
+        name = manned_state[manned] + name
+    else:
+        name += manned_state[manned]
 
 number = input("Enter iteration number: ")
 name += f"-{number}"
